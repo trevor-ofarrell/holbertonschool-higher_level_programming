@@ -1,3 +1,5 @@
 #!/usr/bin/python3
+def rem(str):
+    return str.replace(" ", "")
 for i in range(0, 99):
-    print(i, "=", "0x", "{:2X}".format(i))
+    print(i, "=", hex(i))
