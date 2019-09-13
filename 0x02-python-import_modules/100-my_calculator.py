@@ -12,13 +12,13 @@ if __name__ == "__main__":
         exit(1)
 
     if op == '\*':
-        result = mul(int(a), int(b))
+        result = mul(a, b)
     elif op == '-':
-        result = sub(int(a), int(b))
+        result = sub(a, b)
     elif op == "+":
-        result = add(int(a), int(b))
+        result = add(a, b)
     elif op == '/':
-        result = div(int(a), int(b))
+        result = div(a, b)
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
