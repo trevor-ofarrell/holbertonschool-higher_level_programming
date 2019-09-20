@@ -39,4 +39,4 @@ def roman_to_int(roman_string):
         else:
             ret = ret + s1
             i = i + 1
-    return ret
+    return int(ret)
