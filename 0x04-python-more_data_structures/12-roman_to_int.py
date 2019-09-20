@@ -24,14 +24,14 @@ def roman_to_int(roman_string):
     while (i < len(roman_string)):
         s1 = rome(roman_string[i])
         if i + 1 < len(roman_string):
-            s2 = rome(str[i])
+            s2 = rome(roman_string[i])
             if s1 >= s2:
-                res = res + s1
+                ret = ret + s1
                 i = i + 1
             else:
-                res = res + s1
+                ret = ret + s1
                 i += 2
         else:
-            res = res + s1
+            ret = ret + s1
             i = i + 1
-    return res
+    return ret
