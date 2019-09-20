@@ -4,6 +4,8 @@ def rome(r):
         return 1
     if (r == 'V'):
         return 5
+    if r == 'IX':
+        return 9
     if (r == 'X'):
         return 10
     if (r == 'L'):
@@ -15,7 +17,6 @@ def rome(r):
     if (r == 'M'):
         return 1000
     return -1
-
 
 
 def roman_to_int(roman_string):
@@ -31,6 +32,8 @@ def roman_to_int(roman_string):
             else:
                 ret = ret + s1
                 i += 2
+            if ret == 'IX':
+                return 9
         else:
             ret = ret + s1
             i = i + 1
