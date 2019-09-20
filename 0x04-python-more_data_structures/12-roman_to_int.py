@@ -22,6 +22,8 @@ def rome(r):
 def roman_to_int(roman_string):
     i = 0
     ret = 0
+    if roman_string == None or not str:
+        return 0
     while (i < len(roman_string)):
         s1 = rome(roman_string[i])
         if i + 1 < len(roman_string):
