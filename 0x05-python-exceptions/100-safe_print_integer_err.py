@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-import sys
-import traceback
-
-
 def safe_print_integer_err(value):
+    import sys
+    import traceback
     try:
         if isinstance(value, int) is True:
             print("{:d}".format(value))
