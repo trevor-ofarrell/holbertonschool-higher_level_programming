@@ -10,5 +10,4 @@ def safe_print_integer_err(value):
             return True
     except Exception as e:
         sys.stderr.write("Exception: ", traceback.print_exc())
-        print(e, file=sys.stderr)
         return False
