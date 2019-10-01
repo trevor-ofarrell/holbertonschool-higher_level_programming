@@ -22,5 +22,8 @@ class Square:
     def area(self):
         """Public instance method to return area of square"""
         if isinstance(self.size, str) is True:
-            raise TypeError("size must be an integer")
+            try:
+                raise TypeError("size must be an integer")
+            except TypeError:
+                raise
         return self.size ** 2
