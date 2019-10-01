@@ -21,7 +21,7 @@ class Square:
     @size.setter
     def size(self, value):
         """property setter"""
-        if isinstance(value, str) is True:
+        if isinstance(value, int) is False:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
@@ -33,7 +33,7 @@ class Square:
             print('\n')
         for i in range(self.size):
             for i in range(self.size):
-                print("#", end='')
+                print("#", end="")
             print()
 
     def area(self):
