@@ -19,9 +19,11 @@ class Square:
                 raise
 
     def size(self):
+        """property getter"""
         return self.__size
 
     def size(self, value):
+        """property setter"""
         self.__size = value
 
     def area(self):
