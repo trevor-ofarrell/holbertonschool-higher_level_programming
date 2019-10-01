@@ -10,7 +10,6 @@ class Square:
         Raises:
         ValueError: If size is negitive
         TypeError: If size is not an int"""
-
         self.__size = size
         self.size = size
         if size < 0:
@@ -19,6 +18,12 @@ class Square:
             except ValueError:
                 raise
 
+    def size(self):
+        return self.__size
+
+    def size(self, value):
+        self.__size = value
+
     def area(self):
         """Public instance method to return area of square"""
         if isinstance(self.size, str) is True:
@@ -26,4 +31,4 @@ class Square:
                 raise TypeError("size must be an integer")
             except TypeError:
                 raise
-        return self.__size ** 2
+        return self.size ** 2
