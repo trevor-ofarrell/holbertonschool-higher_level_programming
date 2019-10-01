@@ -26,4 +26,4 @@ class Square:
                 raise TypeError("size must be an integer")
             except TypeError:
                 raise
-        return self.size ** 2
+        return self.__size ** 2
