@@ -10,7 +10,7 @@ class Square:
         Raises:
         ValueError: If size is negitive
         TypeError: If size is not an int"""
-        self.__size = size
+
         self.size = size
         if size < 0:
             try:
