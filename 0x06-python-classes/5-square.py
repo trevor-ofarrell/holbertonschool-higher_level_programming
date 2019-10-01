@@ -12,6 +12,20 @@ class Square:
 
         self.size = size
 
+    @property
+    def size(self):
+        """property getter"""
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        """property setter"""
+        if isinstance(value, str) is True:
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
+
     def my_print(self):
         """Public instance method to print square based on area data"""
         if self.size == 0:
