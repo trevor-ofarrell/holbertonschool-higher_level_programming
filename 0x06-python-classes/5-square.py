@@ -30,11 +30,11 @@ class Square:
     def my_print(self):
         """Public instance method to print square based on area data"""
         if self.size == 0:
-            print('\n')
+            print("")
         for i in range(self.size):
             for i in range(self.size):
                 print("#", end="")
-            print()
+            print("")
 
     def area(self):
         """Public instance method to return area of square"""
