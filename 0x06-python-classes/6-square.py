@@ -57,7 +57,7 @@ class Square:
     def my_print(self):
         """Public instance method to print square based on area data"""
         if self.size == 0:
-            print("")
+            print()
         else:
             print('\n' * self.position[1], end="")
             for i in range(self.size):
