@@ -46,7 +46,8 @@ class Square:
         if value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
-
+        if len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
     def my_print(self):
         """Public instance method to print square based on area data"""
         if self.size == 0:
