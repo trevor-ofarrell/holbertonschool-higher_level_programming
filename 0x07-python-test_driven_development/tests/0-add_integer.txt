@@ -1,9 +1,16 @@
 test
->>> 2 + 2
-4
+>>> add = __import__('0-add_integer').add_integer
 
->>> 0 + 9
-9
+>>> print(add(2))
+100
 
->>> h + 9
-b must be an integer
+>>> print(add(0))
+98
+
+>>> print(add(-3333))
+-3235
+
+>>> 'h' + 9
+Traceback (most recent last call):
+	  ...
+TypeError: a must be an integer
