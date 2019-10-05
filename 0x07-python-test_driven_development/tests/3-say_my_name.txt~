@@ -1,0 +1,24 @@
+print name
+>>> pname = __import__('3-say_my_name').say_my_name
+
+>>> pname("jake", "steven")
+My name is jake steven
+
+>>> pname("ben", "j")
+My name is ben
+
+>>> pname(99, "jones")
+Traceback (most recent last call):
+	    ...
+TypeError: first_name must be a string
+
+>>> pname("trev", 99)
+Traceback (most recent last call):
+	  ...
+TypeError: last_name must be a string
+
+>>> pname(0, 9)
+Traceback (most recent last call):
+	  ...
+TypeError: first_name must be a string
+TypeError: last_name must be a string

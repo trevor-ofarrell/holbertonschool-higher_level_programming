@@ -1,0 +1,28 @@
+indentation
+
+>>> indent = __import__('5-text_indentation').text_indentation
+
+>>> indent("hello?world.hello.world:helloworld")
+hello?
+<BLANKLINE>
+world.
+<BLANKLINE>
+hello.
+<BLANKLINE>
+world:
+<BLANKLINE>
+helloworld
+
+>>> indent(9)
+Traceback (most recent call last):
+          ...
+TypeError: text must be a string
+
+>>> indent()
+
+>>> indent("")
+
+>>> indent("     ")
+
+>>> indent("        whitespace")
+whitespace

@@ -14,3 +14,5 @@ test
 Traceback (most recent last call):
 	  ...
 TypeError: a must be an integer
+
+>>> 
