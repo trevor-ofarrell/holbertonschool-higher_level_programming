@@ -1,9 +1,0 @@
-test
->>> 2 + 2
-4
-
->>> 0 + 9
-9
-
->>> h + 9
-a must be an integer
