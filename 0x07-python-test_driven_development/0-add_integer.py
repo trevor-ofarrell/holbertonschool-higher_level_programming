@@ -1,12 +1,24 @@
 #!/usr/bin/python3
+
+
+"""module to add ints
+
+   Args: a (int) and b (int)
+
+"""
+
+
 def add_integer(a, b=98):
-    if isinstance(a, (int, float)) == False:
+    if isinstance(a, (int, float)) is False:
         raise TypeError("a must be an integer")
-    if isinstance(b, (int, float)) == False:
+
+    if isinstance(b, (int, float)) is False:
         raise TypeError("b must be an integer")
-    if isinstance(a, float) == True:
+
+    if isinstance(a, float) is True:
         a = int(a)
-    if isinstance(b, float) == True:
+
+    if isinstance(b, float) is True:
         b = int(b)
-    ssum = a + b
-    return ssum
+
+    return a + b
