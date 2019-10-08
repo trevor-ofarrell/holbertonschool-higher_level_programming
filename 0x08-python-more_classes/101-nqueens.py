@@ -15,8 +15,6 @@ if N < 4:
     print("N must be at least 4")
     exit(1)
 
-count = 0
-
 
 def solve(N, i, a, b, c):
     if i < int(N):
@@ -29,6 +27,7 @@ def solve(N, i, a, b, c):
 
 for solution in solve(N, 0, [], [], []):
     e1 = enumerate(solution)
+    print("[", end='')
     for ele in e1:
         print("{}".format(list(ele)), end='')
-    print()
+    print("]")
