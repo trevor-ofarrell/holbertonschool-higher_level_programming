@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 from sys import argv
+if len(argv) != 2:
+    print("Usage: nqueens N")
+    exit(1)
 N = int(argv[1])
 count = 0
-
 
 def solve(N, i, a, b, c):
     if i < int(N):
