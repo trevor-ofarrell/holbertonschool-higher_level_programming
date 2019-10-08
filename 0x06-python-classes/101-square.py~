@@ -50,7 +50,7 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
-    def my_print(self, size, position):
+    def my_print(self):
         """Public instance method to print square based on area data"""
         if self.size == 0:
             print()
@@ -64,5 +64,5 @@ class Square:
         """Public instance method to return area of square"""
         return self.__size ** 2
 
-    def __repr__(self):
-        return self.my_print(self.size, self.position)
+    def __str__(self):
+        return Square.my_print(value)

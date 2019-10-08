@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+import sys
+def solvenq():
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        exit(1)
+    if not isinstance(N, int):
+        print("N must be a number")
+        exit(1)
+    if N < 4:
+        print("n must be at least 4")
+        exit(1)
+
+def printSolution(board, N):
+    for i in range(N):
+        for j in range(N):
+            print(board[i][j]),
+        print
+
+def canplace(board, row, col):
+
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    return True
+
+def solveutil(board, col):
+
+    if col >= N:
+        return True
+
+    for i in range(N):
+        if canplace(board, i, col):
+            board[i][col] = 1
+
+            if solveutil(board, col + 1) is True:
+                return True
+
+            board[i][col] = 0
+
+    return False

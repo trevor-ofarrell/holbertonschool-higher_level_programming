@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+import hidden_4
+for seg in dir(hidden_4):
+    if seg[:2] != "__":
+        print(seg)
