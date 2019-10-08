@@ -5,15 +5,9 @@ if len(argv) != 2:
     print("Usage: nqueens N")
     exit(1)
 
-N = int(argv[1])
-
-if isinstance(N, str):
-    print("N must be a number")
-    exit(1)
-
-N = int(argv[1])
-
-if not isinstance(N, int):
+try:
+    N = int(argv[1])
+except:
     print("N must be a number")
     exit(1)
 
