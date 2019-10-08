@@ -61,6 +61,8 @@ class Rectangle:
 
     def __str__(self):
 
+        """method to print a string representation of the rectangle"""
+
         if self.height == 0 or self.width == 0:
             return ""
 
@@ -69,6 +71,8 @@ class Rectangle:
         return str1[:-1]
 
     def __repr__(self):
+
+        """method to print the info on the rectangles height & width"""
 
         return "Rectangle(%s, %s)" % (self.height, self.width)
 
