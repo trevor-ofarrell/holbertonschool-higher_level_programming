@@ -74,7 +74,7 @@ class Rectangle:
 
         """method to print the info on the rectangles height & width"""
 
-        return "Rectangle(%s, %s)" % (self.height, self.width)
+        return "Rectangle(%s, %s)" % (self.width, self.height)
 
     def perimeter(self):
 
