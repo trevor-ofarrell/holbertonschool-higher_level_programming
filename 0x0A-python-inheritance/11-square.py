@@ -5,6 +5,8 @@ BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 class Square(Rectangle):
 
+    """class that defines a square, derived from the Rectangle class"""
+
     def __init__(self, size):
 
         """init method"""
@@ -18,4 +20,11 @@ class Square(Rectangle):
     def area(self):
 
         """method to calculate area of square"""
+
         return self.__size * self.__size
+
+    def __str__(self):
+
+        """string representation of the rectangle"""
+
+        return "{} {}/{}".format("[Square]", self.__size, self.__size)
