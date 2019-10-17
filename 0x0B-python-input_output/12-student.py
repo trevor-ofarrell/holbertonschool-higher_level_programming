@@ -17,7 +17,7 @@ class Student():
 
         stu = {}
 
-        if not attrs:
+        if attrs is none:
 
             return self.__dict__
 
