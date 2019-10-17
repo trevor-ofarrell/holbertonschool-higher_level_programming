@@ -25,10 +25,10 @@ class Student():
 
             return self.__dict__
 
-        for key, value in self.__dict__.items():
+        for key in attrs:
 
-            if key in attrs and all(isinstance(key, str) for key in attrs):
+            if key in self.__dict__.keys():
 
-                stu[key] = value
+                stu[key] = self.__dict__[key]
 
         return stu
