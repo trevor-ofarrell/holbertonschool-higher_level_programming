@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+def append_after(filename="", search_string="", new_string=""):
+
+    """module to append string after all occurences of a certin string"""
+
+    ret = ""
+
+    with open(filename, "r") as rf:
+
+        buf = rf.readlines()
+
+    with open(filename, "w") as of:
+
+        for line in buf:
+
+            ret += line
+
+            if search_string in line:
+
+                ret += new_string
+
+                of.write(ret)
