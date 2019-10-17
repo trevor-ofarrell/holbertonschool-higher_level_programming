@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 def append_after(filename="", search_string="", new_string=""):
 
-    """module to append string after all occurences of a certin string"""
-
-    ret = ""
+    ret = ''
 
     with open(filename, "r") as rf:
 
@@ -19,4 +17,4 @@ def append_after(filename="", search_string="", new_string=""):
 
                 ret += new_string
 
-        of.write(ret)
+                of.write(ret)
