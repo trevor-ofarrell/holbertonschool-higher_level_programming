@@ -1,10 +1,18 @@
 #!/usr/bin/python3
-import lxml.html
 import requests
 
-page = requests.get('https://ratings.fide.com')
-tree = html.fromstring(page.content)
+html = 'https://en.wikipedia.org/wiki/List_of_chess_players_by_peak_FIDE_rating'
 
-players = tree.xpath('//div[@class="top-players-table"]/text()')
+from bs4 import BeautifulSoup
 
-print('Players: ', players)
+soup = BeautifulSoup(html, 'lxml')
+
+table = soup.find('table',{'class':'wikitable sortable'})
+
+names = table.findAll('a')
+
+cn = []
+for names in names:
+    cn.append(names.get('title'))
+
+print(cn)
