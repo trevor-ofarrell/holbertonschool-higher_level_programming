@@ -38,12 +38,11 @@ class Base:
         """class method to save the JSON string representation of list_objs to a file"""
         
         i = 1
-        dictionary = {}
-        jsondict = {}
+        empty = []
 
         if list_objs is None:
             
-            json.dump(dictionary, f)
+            json.dump(empty, f)
 
         with open(cls.__name__ + '.json', mode='w+') as f:
 
