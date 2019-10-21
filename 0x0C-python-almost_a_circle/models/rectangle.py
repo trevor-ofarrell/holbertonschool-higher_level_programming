@@ -114,17 +114,17 @@ class Rectangle(Base):
     def display(self):
 
         sym = '#'
-        l = []
+        space = ' '
 
         """public method to print str representation of the rectangle"""
 
-        print(self.__y * '\n' + (self.__x * ' ' + '#' * self.__width + '\n') * self.__height, end='')
+        print(self.__y * '\n' + (self.__x * space + sym * self.__width + '\n') * self.__height, end='')
 
     def __str__(self):
 
         """overriding str method"""
 
-        return "[{}] ({}) {}/{} - {}/{}".format("Rectangle", self.id, self.x, self.y, self.__width, self.__height)
+        return "[{}] ({}) {}/{} - {}/{}".format("Rectangle", self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
 
@@ -134,7 +134,7 @@ class Rectangle(Base):
 
             try:
 
-                if len(args) == 1:
+                if len(args) > 0:
                     setattr(self, 'id', args[0])
                 if len(args) == 2:
                     setattr(self, 'width', args[1])
@@ -154,3 +154,8 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, key, value)
                 
+    def to_dictionary(self):
+
+        """public method that returns the dictionary representation of a Rectangle"""
+
+        return {'id' : self.id, 'width' : self.width, 'height' : self.height, 'x' : self.x, 'y' : self.y}
