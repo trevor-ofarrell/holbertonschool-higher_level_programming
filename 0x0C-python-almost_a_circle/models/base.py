@@ -55,3 +55,14 @@ class Base:
                 i += 1
 
             f.write(']')
+
+    @staticmethod
+    def from_json_string(json_string):
+
+        """method to return list of JSON str representations"""
+
+        if json_string is None or not json_string:
+
+            return json_string
+        
+        return json.loads(json_string)
