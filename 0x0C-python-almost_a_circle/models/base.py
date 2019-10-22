@@ -64,9 +64,11 @@ class Base:
 
         """method to return list of JSON str representations"""
 
+        empty = []
+
         if json_string is None or not json_string:
 
-            return json_string
+            return empty
 
         return json.loads(json_string)
 
