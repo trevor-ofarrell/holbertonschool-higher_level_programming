@@ -71,6 +71,8 @@ class Base:
 
         """method to return a instance with attrs already set"""
 
-        dummy = Base()
+        dummy = cls(width=9, height=9)
 
-        Base.update(dummy, None, dictionary)
+        dummy.update(**dictionary)
+        
+        return dummy
