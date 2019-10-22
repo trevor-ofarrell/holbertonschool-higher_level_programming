@@ -76,3 +76,22 @@ class Base:
         dummy.update(**dictionary)
         
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        
+        """method to return list of instances"""
+
+        ret = []
+
+        try:
+
+            with open(cls.__name__ + '.json', mode='r') as f:
+
+                buf = f.read()
+
+                return Base.from_json_string(buf)
+
+        except Exception:
+
+            return ret
