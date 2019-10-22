@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 import json
-"""base class for project"""
+"""base module for holberton school project"""
 
 
 class Base:
+
+    """base class for project"""
 
     __nb_objects = 0
 
