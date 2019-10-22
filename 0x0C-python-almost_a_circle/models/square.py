@@ -29,6 +29,8 @@ class Square(Rectangle):
 
     def __str__(self):
 
+        """method to override str method"""
+
         return "[{}] ({}) {}/{} - {}".format("Square",
                                              self.id, self.x,
                                              self.y, self.width)
