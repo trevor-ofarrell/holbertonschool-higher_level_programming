@@ -106,7 +106,7 @@ class Base:
                     ret.append(cls.create(**elm))
                 return ret
 
-        except Exception:
+        except FileNotFoundError:
 
             ret = []
 
