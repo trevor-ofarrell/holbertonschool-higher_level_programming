@@ -11,13 +11,11 @@ class Base:
         """initialization method"""
 
         if id is not None:
-
             self.id = id
 
         else:
             
             Base.__nb_objects += 1
-
             self.id = Base.__nb_objects
 
     @staticmethod
@@ -87,11 +85,17 @@ class Base:
         try:
 
             with open(cls.__name__ + '.json', mode='r') as f:
+                
+                buf = cls.from_json_string(f.read())
 
-                buf = f.read()
-
-                return Base.from_json_string(buf)
-
+                for elm in buf:
+                        
+                    ret.append(cls.create(**elm))
+                    
+                return ret
+                    
         except Exception:
+
+            ret = []
 
             return ret
