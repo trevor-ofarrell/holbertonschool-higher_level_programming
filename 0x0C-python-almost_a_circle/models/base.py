@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import json
 """base module for holberton school project"""
+import json
 
 
 class Base:
