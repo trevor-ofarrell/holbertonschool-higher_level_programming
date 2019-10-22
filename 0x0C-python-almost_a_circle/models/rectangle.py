@@ -115,11 +115,11 @@ class Rectangle(Base):
 
     def display(self):
 
-        sym = '#'
-        space = ' '
-
         """public method to print str representation
         of the rectangle"""
+
+        sym = '#'
+        space = ' '
 
         print(self.__y * '\n' + (self.__x * space + sym * self.__width +
                                  '\n') * self.__height, end='')
