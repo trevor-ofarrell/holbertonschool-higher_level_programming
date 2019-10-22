@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 import json
+"""base class for project"""
 
 
 class Base:
-
-    """base class for project"""
 
     __nb_objects = 0
 
@@ -82,6 +81,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+
         """method to return list of instances"""
 
         ret = []
