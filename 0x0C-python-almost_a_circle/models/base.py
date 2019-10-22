@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import json
+
+
 class Base:
 
     """base class for project"""
@@ -14,14 +16,15 @@ class Base:
             self.id = id
 
         else:
-            
+
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
 
-        """static method to return the JSON string representation of list_dictionaries"""
+        """static method to return the JSON string
+           representation of list_dictionaries"""
 
         if list_dictionaries is None or not list_dictionaries:
 
@@ -32,15 +35,16 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
 
-        """class method to save the JSON string representation of list_objs to a file"""
-        
+        """class method to save the JSON string
+           representation of list_objs to a file"""
+
         i = 1
         empty = []
 
         with open(cls.__name__ + '.json', mode='w') as f:
 
             if list_objs is None:
-            
+
                 json.dump(empty, f)
 
             f.write('[')
@@ -61,7 +65,7 @@ class Base:
         if json_string is None or not json_string:
 
             return json_string
-        
+
         return json.loads(json_string)
 
     @classmethod
@@ -72,12 +76,11 @@ class Base:
         dummy = cls(width=9, height=9)
 
         dummy.update(**dictionary)
-        
+
         return dummy
 
     @classmethod
     def load_from_file(cls):
-        
         """method to return list of instances"""
 
         ret = []
@@ -85,15 +88,13 @@ class Base:
         try:
 
             with open(cls.__name__ + '.json', mode='r') as f:
-                
+
                 buf = cls.from_json_string(f.read())
 
                 for elm in buf:
-                        
                     ret.append(cls.create(**elm))
-                    
                 return ret
-                    
+
         except Exception:
 
             ret = []

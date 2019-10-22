@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
 
     """class to represent a square, based off of Rectangle"""
@@ -28,7 +29,9 @@ class Square(Rectangle):
 
     def __str__(self):
 
-        return "[{}] ({}) {}/{} - {}".format("Square", self.id, self.x, self.y, self.width)
+        return "[{}] ({}) {}/{} - {}".format("Square",
+                                             self.id, self.x,
+                                             self.y, self.width)
 
     def update(self, *args, **kwargs):
 
@@ -46,9 +49,9 @@ class Square(Rectangle):
                     setattr(self, 'x', args[2])
                 if len(args) == 4:
                     setattr(self, 'y', args[3])
-            
+
             except Exception:
-            
+
                 raise Exception
 
         else:
@@ -58,6 +61,7 @@ class Square(Rectangle):
 
     def to_dictionary(self):
 
-        """public method that returns the dictionary representation of a Square"""
+        """public method that returns the dictionary
+        representation of a Square"""
 
-        return {'id' : self.id, 'size' : self.size, 'x' : self.x, 'y' : self.y}
+        return {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}

@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 import sys
 from models.base import Base
+
+
 class Rectangle(Base):
-    
+
     """class that represents a rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -15,7 +17,6 @@ class Rectangle(Base):
         self.y = y
 
         super().__init__(id)
-        
 
     @property
     def width(self):
@@ -58,7 +59,7 @@ class Rectangle(Base):
         if value <= 0:
 
             raise ValueError("height must be > 0")
-        
+
         self.__height = value
 
     @property
@@ -80,9 +81,9 @@ class Rectangle(Base):
         if value < 0:
 
             raise ValueError("x must be >= 0")
-        
+
         self.__x = value
-    
+
     @property
     def y(self):
 
@@ -102,7 +103,7 @@ class Rectangle(Base):
         if value < 0:
 
             raise ValueError("y must be >= 0")
-        
+
         self.__y = value
 
     def area(self):
@@ -116,46 +117,47 @@ class Rectangle(Base):
         sym = '#'
         space = ' '
 
-        """public method to print str representation of the rectangle"""
+        """public method to print str representation
+        of the rectangle"""
 
-        print(self.__y * '\n' + (self.__x * space + sym * self.__width + '\n') * self.__height, end='')
+        print(self.__y * '\n' + (self.__x * space + sym * self.__width +
+                                 '\n') * self.__height, end='')
 
     def __str__(self):
 
         """overriding str method"""
 
-        return "[{}] ({}) {}/{} - {}/{}".format("Rectangle", self.id, self.__x, self.__y, self.__width, self.__height)
+        return "[{}] ({}) {}/{} - {}/{}".format("Rectangle",
+                                                self.id, self.__x, self.__y,
+                                                self.__width, self.__height)
 
     def update(self, *args, **kwargs):
 
         """public method to assign an argument to each attr"""
-    
+
         if args:
 
-            try:
-
-                if len(args) > 0:
-                    setattr(self, 'id', args[0])
-                if len(args) == 2:
-                    setattr(self, 'width', args[1])
-                if len(args) == 3:
-                    setattr(self, 'height', args[2])
-                if len(args) == 4:
-                    setattr(self, 'x', args[3])
-                if len(args) == 5:
-                    setattr(self, 'y', args[4])
-
-            except Exception:
-            
-                raise Exception
+            if len(args) > 0:
+                setattr(self, 'id', args[0])
+            if len(args) == 2:
+                setattr(self, 'width', args[1])
+            if len(args) == 3:
+                setattr(self, 'height', args[2])
+            if len(args) == 4:
+                setattr(self, 'x', args[3])
+            if len(args) == 5:
+                setattr(self, 'y', args[4])
 
         else:
 
             for key, value in kwargs.items():
+
                 setattr(self, key, value)
-                
+
     def to_dictionary(self):
 
-        """public method that returns the dictionary representation of a Rectangle"""
+        """public method that returns the dictionary
+        representation of a Rectangle"""
 
-        return {'id' : self.id, 'width' : self.width, 'height' : self.height, 'x' : self.x, 'y' : self.y}
+        return {'id': self.id, 'width': self.width,
+                'height': self.height, 'x': self.x, 'y': self.y}
