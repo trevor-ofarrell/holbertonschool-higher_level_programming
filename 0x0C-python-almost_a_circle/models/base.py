@@ -46,6 +46,7 @@ class Base:
             if list_objs is None:
 
                 json.dump(empty, f)
+                return
 
             f.write('[')
 
