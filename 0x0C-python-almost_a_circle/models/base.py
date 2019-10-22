@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 import json
 class Base:
@@ -40,11 +39,11 @@ class Base:
         i = 1
         empty = []
 
-        if list_objs is None:
-            
-            json.dump(empty, f)
+        with open(cls.__name__ + '.json', mode='w') as f:
 
-        with open(cls.__name__ + '.json', mode='w+') as f:
+            if list_objs is None:
+            
+                json.dump(empty, f)
 
             f.write('[')
 
@@ -66,3 +65,12 @@ class Base:
             return json_string
         
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+
+        """method to return a instance with attrs already set"""
+
+        dummy = Base()
+
+        Base.update(dummy, None, dictionary)
