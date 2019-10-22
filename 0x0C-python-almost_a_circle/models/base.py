@@ -77,7 +77,13 @@ class Base:
 
         """method to return a instance with attrs already set"""
 
-        dummy = cls(width=9, height=9)
+        if cls.__name__ is 'Square':
+
+            dummy = cls(size=9)
+
+        else:
+
+            dummy = cls(width=9, height=9)
 
         dummy.update(**dictionary)
 
