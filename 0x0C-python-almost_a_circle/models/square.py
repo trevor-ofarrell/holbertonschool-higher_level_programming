@@ -42,7 +42,7 @@ class Square(Rectangle):
 
         if args:
 
-            if len(args) > 0:
+            if len(args) >= 0:
                 setattr(self, 'id', args[0])
             if len(args) == 2:
                 setattr(self, 'size', args[1])
