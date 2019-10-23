@@ -15,6 +15,24 @@ class Test_Base(unittest.TestCase):
         """Resets nb_objects"""
         Base._Base__nb_objects = 0
 
+    def test_id_count(self):
+        """test number of instances"""
+        new = Base()
+        self.assertEqual(new.id, 1)
+
+    def test_higher_id_count(self):
+        """testing a range of instance creation"""
+        new = Base()
+        self.assertEqual(new.id, 1)
+        new2 = Base()
+        self.assertEqual(new2.id, 2)
+        new3 = Base(9)
+        self.assertEqual(new3.id, 9)
+        new4 = Base()
+        self.assertEqual(new4.id, 3)
+        new5 = Base(963)
+        self.assertEqual(new5.id, 963)
+
     def test_id(self):
         """test type of id"""
         test = Base()
@@ -24,6 +42,30 @@ class Test_Base(unittest.TestCase):
         """test id value"""
         test = Base()
         self.assertEqual(test.id > 0, True)
+
+    def test_unknown(self):
+        """name error"""
+        with self.assertRaises(NameError):
+            Base(a)
+
+    def test_to_json_string_len(self):
+        """to_json_string len"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        self.assertEqual(len(json_dictionary), len(str([{
+            "x": 2, "width": 10, "id": 6, "height": 7, "y": 8}])))
+        self.assertTrue(type(json_dictionary), dict)
+
+    def test_to_json_string_len_square(self):
+        """to_json_string len"""
+        r1 = Square(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        self.assertEqual(len(json_dictionary), len(str([{
+            "x": 7, "size": 10, "id": 8, "y": 2}])))
+        self.assertTrue(type(json_dictionary), dict)
+
 
     def test_to_json_string(self):
         """test return type"""
@@ -61,6 +103,18 @@ class Test_Base(unittest.TestCase):
             data = f.read()
             self.assertEqual(data, '[]')
 
+    def test_save_to_file_len_Square(self):
+        """JSON string rep len"""
+        r1 = Square(10, 7, 2, 8)
+        r2 = Square(2, 4)
+        Square.save_to_file([r1, r2])
+        with open("Square.json") as file:
+            self.assertEqual(
+                len(file.read()), len(str(
+                    [{"x": 7, "id": 8, "size": 10, "y": 2}, {
+                        "x": 4, "id": 7, "size": 2, "y": 0}]
+                    )))
+
     def test_from_json_string_none(self):
         """test submitting None"""
         lo = None
@@ -77,12 +131,27 @@ class Test_Base(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         self.assertEqual(type(list_output), list)
 
+    def test_create_TypeError(self):
+        """instance with TypeError"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        with self.assertRaises(TypeError):
+            r2 = Rectangle.create(None)
+
     def test_create_instance(self):
         """test intance creation"""
         r1 = Rectangle(3, 5, 1)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
         self.assertEqual(isinstance(r2, Base), True)
+
+    def test_create_TypeError_string(self):
+        """instance with TypeError string"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        with self.assertRaises(NameError):
+            r2 = Rectangle.create(**betty)
+
 
     def test_create_class_name(self):
         """comparison of instances"""
