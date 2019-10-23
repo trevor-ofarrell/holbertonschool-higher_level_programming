@@ -15,6 +15,11 @@ class Test_Base(unittest.TestCase):
         test = Base()
         self.assertEqual(type(test.id), int)
 
+    def test_id_greater_than_zero(self):
+        
+        test = Base()
+        self.assertEqual(test.id > 0, True)
+
     def test_to_json_string(self):
 
         r = Rectangle(10, 5, 5, 5)
