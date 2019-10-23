@@ -133,3 +133,44 @@ class Test_Rectangle(unittest.TestCase):
             sys.stdout = sys.__stdout__
             assert output.getvalue() == "[Rectangle] (89) 4/5 - 2/3\n"
 
+      def test_one_param(self):
+            """Passing one parameter"""
+            with self.assertRaises(TypeError):
+                  r1 = Rectangle(4)
+
+      def test_all_param(self):
+            """Passing all parameters"""
+            r1 = Rectangle(1, 2, 3, 4, 5)
+
+      def test_unknown(self):
+            """unknown parameter"""
+            with self.assertRaises(NameError):
+                  r1 = Rectangle(a)
+
+      def test_display(self):
+            """Tests rectangle output"""
+            output = StringIO()
+            sys.stdout = output
+            r1 = Rectangle(3, 3)
+            r1.display()
+            sys.stdout = sys.__stdout__
+            assert output.getvalue() == "###\n###\n###\n"
+
+      def test_display_x_y(self):
+            """Tests rectangle with x and y"""
+            output = StringIO()
+            sys.stdout = output
+            r2 = Rectangle(3, 2, 1, 0)
+            r2.display()
+            sys.stdout = sys.__stdout__
+            assert output.getvalue() == " ###\n ###\n"
+
+      def test_to_dict_rep(self):
+        """Test dictionary"""
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dictionary = r1.to_dictionary()
+        self.assertEqual(r1_dictionary, {
+            'x': 1, 'y': 9, 'id': 41, 'height': 2, 'width': 10})
+
+if __name__ == '__main__':
+    unittest.main()
