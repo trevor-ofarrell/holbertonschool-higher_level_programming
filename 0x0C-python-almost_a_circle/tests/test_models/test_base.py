@@ -239,46 +239,6 @@ class Test_Base(unittest.TestCase):
         self.assertIsInstance(list_objs_s[2], Square)
         self.assertDictEqual(list_objs_s[2].to_dictionary(), ds3)
 
-    def test_load_from_file2(self):
-        """list of instances"""
-        output = StringIO()
-        sys.stdout = output
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        list_rectangles_input = [r1, r2]
-        Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = Rectangle.load_from_file()
-
-        print(list_rectangles_output[0])
-        sys.stdout = sys.__stdout__
-        self.assertEqual(output.getvalue(), "[Rectangle] (1) 2/8 - 10/7\n")
-
-        output = StringIO()
-        sys.stdout = output
-        print(list_rectangles_output[1])
-        sys.stdout = sys.__stdout__
-        self.assertEqual(output.getvalue(), "[Rectangle] (2) 0/0 - 2/4\n")
-        self.assertTrue(type(list_rectangles_output), list)
-
-        output = StringIO()
-        sys.stdout = output
-        s1 = Square(5)
-        s2 = Square(7, 9, 1)
-        list_squares_input = [s1, s2]
-        Square.save_to_file(list_squares_input)
-        list_squares_output = Square.load_from_file()
-
-        print(list_squares_output[0])
-        sys.stdout = sys.__stdout__
-        self.assertEqual(output.getvalue(), "[Square] (5) 0/0 - 5\n")
-
-        output = StringIO()
-        sys.stdout = output
-        print(list_squares_output[1])
-        sys.stdout = sys.__stdout__
-        self.assertEqual(output.getvalue(), "[Square] (6) 9/1 - 7\n")
-        self.assertTrue(type(list_squares_output), list)
-
     def test_create(self):
         """Test instantiation via Create method"""
 
@@ -328,62 +288,6 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(s7.to_dictionary(), ds6)
         self.assertEqual(Base._Base__nb_objects, 12)
 
-    def test_from_json_string(self):
-        """JSON string"""
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertEqual(list_output, [{
-            'id': 89, 'width': 10, 'height': 4}, {
-            'id': 7, 'width': 1, 'height': 7}])
-        self.assertTrue(type(list_output), list)
-
-    def test_from_json_string_rec(self):
-        """JSON string rep"""
-        list_input = [
-            {'id': 89, 'size': 10},
-            {'id': 7, 'size': 1}
-        ]
-        json_list_input = Square.to_json_string(list_input)
-        list_output = Square.from_json_string(json_list_input)
-        self.assertEqual(list_output, [{
-            'id': 89, 'size': 10}, {
-            'id': 7, 'size': 1}])
-        self.assertTrue(type(list_output), list)
-
-    def test_from_json_string_None(self):
-        """JSON string None"""
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(None)
-        self.assertEqual(list_output, [])
-
-    def test_from_json_string_empty(self):
-        """JSON string None"""
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string('')
-        self.assertEqual(list_output, [])
-
-    def test_from_json_string_empty(self):
-        """JSON string type"""
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string('')
-        self.assertTrue(type(list_output), list)
- 
     def test_create_TypeError(self):
         """instance with TypeError"""
         r1 = Rectangle(3, 5, 1)
@@ -391,25 +295,6 @@ class Test_Base(unittest.TestCase):
         with self.assertRaises(TypeError):
             r2 = Rectangle.create(None)
 
-    def test_create_TypeError_int(self):
-        """instance with TypeError int"""
-        r1 = Rectangle(3, 5, 1)
-        r1_dictionary = r1.to_dictionary()
-        with self.assertRaises(TypeError):
-            r2 = Rectangle.create(1, 2, 3)
 
-    def test_create_TypeError_string(self):
-        """instance with TypeError string"""
-        r1 = Rectangle(3, 5, 1)
-        r1_dictionary = r1.to_dictionary()
-        with self.assertRaises(TypeError):
-            r2 = Rectangle.create("string")
-
-    def test_create_TypeError_string(self):
-        """instance with TypeError string"""
-        r1 = Rectangle(3, 5, 1)
-        r1_dictionary = r1.to_dictionary()
-        with self.assertRaises(NameError):
-            r2 = Rectangle.create(**betty)
-
-    
+if __name__ == '__main__':
+    unittest.main()
