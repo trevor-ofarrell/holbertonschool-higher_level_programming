@@ -8,6 +8,7 @@ from models.square import Square
 import sys
 from io import StringIO
 
+
 class TestSquareSize(unittest.TestCase):
 
     """Test Square Size Method"""
@@ -74,7 +75,6 @@ class TestSquareSize(unittest.TestCase):
         print(r1)
         sys.stdout = sys.__stdout__
         assert output.getvalue() == "[Square] (89) 4/5 - 3\n"
-
 
     def test_kwargs_extra_keys(self):
         """kwargs normal behavior"""
