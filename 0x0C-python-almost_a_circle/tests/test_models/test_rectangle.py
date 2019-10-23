@@ -1,4 +1,4 @@
-#!/usr/bin/python3                                                                                                                            
+#!/usr/bin/python3
 """unit test suite"""
 import os.path
 import unittest
@@ -106,7 +106,6 @@ class Test_Rectangle(unittest.TestCase):
         r4 = Rectangle(5, 2, 3, 0, 12)
         self.assertEqual(r4.y, 0)
 
-
     def test_update(self):
         """Test update"""
         output = StringIO()
@@ -154,7 +153,6 @@ class Test_Rectangle(unittest.TestCase):
         print(r1)
         sys.stdout = sys.__stdout__
         assert output.getvalue() == "[Rectangle] (1) 1/3 - 4/2\n"
-
 
     def test_one_param(self):
         """Passing one parameter"""
