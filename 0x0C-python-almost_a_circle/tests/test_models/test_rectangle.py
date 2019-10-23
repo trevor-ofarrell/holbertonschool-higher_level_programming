@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3                                                                                                                            
 """unit test suite"""
 import os.path
 import unittest
@@ -12,6 +12,10 @@ import sys
 class Test_Rectangle(unittest.TestCase):
 
     """class to carry out unit tests on Base class"""
+
+    def setUp(self):
+        """Resets nb_objects"""
+        Base._Base__nb_objects = 0
 
     def test_error_raises(self):
         """testing type errors and value errors"""
@@ -68,6 +72,15 @@ class Test_Rectangle(unittest.TestCase):
             'x must be an integer',
             Rectangle,
             4, 2, [1, 2, 3, 4], 0, 12
+            )
+
+    def test_check_y_TypeError_(self):
+        """Test TypeError for y in Rectangle"""
+        self.assertRaisesRegex(
+            ValueError,
+            'y must be >= 0',
+            Rectangle,
+            4, 2, 0, -6, 12
         )
 
     def test_check_x_ValueError(self):
@@ -93,32 +106,6 @@ class Test_Rectangle(unittest.TestCase):
         r4 = Rectangle(5, 2, 3, 0, 12)
         self.assertEqual(r4.y, 0)
 
-    def test_check_y_TypeError_01(self):
-        """Test TypeError for y in Rectangle"""
-        self.assertRaisesRegex(
-            TypeError,
-            'y must be an integer',
-            Rectangle,
-            4, 2, 0, 'string', 12
-        )
-
-    def test_check_y_TypeError_02(self):
-        """Test TypeError for y in Rectangle"""
-        self.assertRaisesRegex(
-            TypeError,
-            'y must be an integer',
-            Rectangle,
-            4, 2, 0, [1, 2, 3, 4], 12
-        )
-
-    def test_check_y_TypeError_(self):
-        """Test TypeError for y in Rectangle"""
-        self.assertRaisesRegex(
-            ValueError,
-            'y must be >= 0',
-            Rectangle,
-            4, 2, 0, -6, 12
-        )
 
     def test_update(self):
         """Test update"""
@@ -133,6 +120,41 @@ class Test_Rectangle(unittest.TestCase):
         print(r1)
         sys.stdout = sys.__stdout__
         assert output.getvalue() == "[Rectangle] (89) 4/5 - 2/3\n"
+
+    def test_update_extra(self):
+        """Update with extra parameters"""
+        output = StringIO()
+        sys.stdout = output
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(89)
+        r1.update(89, 2)
+        r1.update(89, 2, 3)
+        r1.update(89, 2, 3, 4)
+        r1.update(89, 2, 3, 4, 5)
+        print(r1)
+        sys.stdout = sys.__stdout__
+        assert output.getvalue() == "[Rectangle] (89) 4/5 - 2/3\n"
+
+    def test_update_no_param(self):
+        """Update with extra parameters"""
+        output = StringIO()
+        sys.stdout = output
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update()
+        print(r1)
+        sys.stdout = sys.__stdout__
+        assert output.getvalue() == "[Rectangle] (1) 10/10 - 10/10\n"
+
+    def test_kwargs(self):
+        """Test kwargs"""
+        output = StringIO()
+        sys.stdout = output
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(x=1, height=2, y=3, width=4)
+        print(r1)
+        sys.stdout = sys.__stdout__
+        assert output.getvalue() == "[Rectangle] (1) 1/3 - 4/2\n"
+
 
     def test_one_param(self):
         """Passing one parameter"""
@@ -171,7 +193,7 @@ class Test_Rectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
         self.assertEqual(r1_dictionary, {
-            'x': 1, 'y': 9, 'id': 41, 'height': 2, 'width': 10})
+            'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
 
 if __name__ == '__main__':
     unittest.main()

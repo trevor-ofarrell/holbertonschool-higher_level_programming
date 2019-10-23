@@ -13,15 +13,19 @@ class TestSquareSize(unittest.TestCase):
 
     """Test Square Size Method"""
 
+    def setUp(self):
+        """Resets nb_objects"""
+        Base._Base__nb_objects = 0
+
     def test_str_method(self):
         """test str method for square"""
         s1 = Square(5)
-        self.assertEqual(str(s1), "[Square] (46) 0/0 - 5")
+        self.assertEqual(str(s1), "[Square] (1) 0/0 - 5")
 
     def test_to_dictionary(self):
         """Test conversion to dictionary"""
         r = Square(1, 1, 1, 1)
-        d = {'id': 41, 'size': 1, 'x': 1, 'y': 1}
+        d = {'id': 1, 'size': 1, 'x': 1, 'y': 1}
         self.assertEqual(r.to_dictionary(), d)
         r.my_fun_new_attr = 42
         self.assertEqual(r.to_dictionary(), d)
@@ -90,7 +94,7 @@ class TestSquareSize(unittest.TestCase):
         """to dictionary"""
         s1 = Square(10, 2, 1)
         s1_dictionary = s1.to_dictionary()
-        self.assertEqual(s1_dictionary, {'id': 47, 'x': 2, 'size': 10, 'y': 1})
+        self.assertEqual(s1_dictionary, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
         self.assertTrue(type(s1_dictionary), dict)
 
     def test_save_to_file_None2(self):

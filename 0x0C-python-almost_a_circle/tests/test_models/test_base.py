@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3                                                                            
 """unit test suite"""
 import os.path
 import unittest
@@ -10,6 +10,10 @@ from models.square import Square
 class Test_Base(unittest.TestCase):
 
     """class to carry out unit tests on Base class"""
+
+    def setUp(self):
+        """Resets nb_objects"""
+        Base._Base__nb_objects = 0
 
     def test_id(self):
         """test type of id"""
@@ -55,7 +59,7 @@ class Test_Base(unittest.TestCase):
         Base.save_to_file(lo)
         with open("Base.json", mode='r') as f:
             data = f.read()
-        self.assertEqual(data, '[]')
+            self.assertEqual(data, '[]')
 
     def test_from_json_string_none(self):
         """test submitting None"""
