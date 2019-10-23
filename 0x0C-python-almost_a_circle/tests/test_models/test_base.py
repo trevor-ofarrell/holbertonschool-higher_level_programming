@@ -66,7 +66,6 @@ class Test_Base(unittest.TestCase):
             "x": 7, "size": 10, "id": 8, "y": 2}])))
         self.assertTrue(type(json_dictionary), dict)
 
-
     def test_to_json_string(self):
         """test return type"""
         r = Rectangle(10, 5, 5, 5)
@@ -151,7 +150,6 @@ class Test_Base(unittest.TestCase):
         r1_dictionary = r1.to_dictionary()
         with self.assertRaises(NameError):
             r2 = Rectangle.create(**betty)
-
 
     def test_create_class_name(self):
         """comparison of instances"""

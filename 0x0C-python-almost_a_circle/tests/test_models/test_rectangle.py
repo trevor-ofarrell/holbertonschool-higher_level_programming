@@ -21,7 +21,7 @@ class Test_Rectangle(unittest.TestCase):
         """testing type errors and value errors"""
 
         self.assertRaises((ValueError, TypeError), Rectangle, -1, 0, 'guh', -2)
-        self.assertRaises(TypeError, Rectangle, 's', 8.0, (9, 0), ['eew', 'we'])
+        self.assertRaises(TypeError, Rectangle, 's', 8.0, (9, 0), ['ew', 'we'])
         self.assertRaises(ValueError, Rectangle, -4, 0, -4, 0, -6)
         self.assertRaises(TypeError, Rectangle, 9, 'dfd')
         self.assertRaises(TypeError, Rectangle, 9, 7, 8, 'fff')
@@ -40,14 +40,11 @@ class Test_Rectangle(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle, dict, list)
         self.assertRaises(TypeError, Rectangle, list, str, float, int)
 
-
     def test_rec_area(self):
         """test area method"""
 
         r = Rectangle(5, 6, 0, 0, self.id)
         self.assertEqual(r.area(), 30)
-
-    
 
     def test_rec_disply(self):
         """test printing method"""
@@ -134,7 +131,7 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r4.y, 0)
 
     def test_update(self):
-        """Test update"""
+        """Test update method"""
         output = StringIO()
         sys.stdout = output
         r1 = Rectangle(10, 10, 10, 10)

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for Square Size
-"""
+"""Unittest for Square Size"""
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -9,30 +8,43 @@ import sys
 from io import StringIO
 
 
-class TestSquareSize(unittest.TestCase):
+class Test_Square(unittest.TestCase):
 
-    """Test Square Size Method"""
+    """class to test square class/methods"""
 
     def setUp(self):
         """Resets nb_objects"""
         Base._Base__nb_objects = 0
 
-    def test_str_method(self):
-        """test str method for square"""
-        s1 = Square(5)
-        self.assertEqual(str(s1), "[Square] (1) 0/0 - 5")
+    def test_id(self):
+        """test instance count"""
+        new = Square(9)
+        self.assertEqual(new.id, 1)
 
-    def test_to_dictionary(self):
-        """Test conversion to dictionary"""
-        r = Square(1, 1, 1, 1)
-        d = {'id': 1, 'size': 1, 'x': 1, 'y': 1}
-        self.assertEqual(r.to_dictionary(), d)
-        r.my_fun_new_attr = 42
-        self.assertEqual(r.to_dictionary(), d)
-
-    def test_all_param(self):
-        """Passing all parameters"""
-        r1 = Square(1, 2, 3, 4)
+    def test_parameters(self):
+        """Extra parameters"""
+        with self.assertRaises(TypeError):
+            r1 = Square("string")
+        with self.assertRaises(TypeError):
+            r1 = Square(1, "2")
+        with self.assertRaises(TypeError):
+            r1 = Square(1.2)
+        with self.assertRaises(TypeError):
+            r1 = Square(1, 2, 3, 4, 1, 3)
+        with self.assertRaises(NameError):
+            r1 = Square(a)
+        with self.assertRaises(TypeError):
+            r1 = Square(None)
+        with self.assertRaises(TypeError):
+            r1 = Square()
+        with self.assertRaises(ValueError):
+            r1 = Square(0)
+        with self.assertRaises(ValueError):
+            r1 = Square(-1)
+        with self.assertRaises(ValueError):
+            r1 = Square(1, -1, 2, 3)
+        with self.assertRaises(ValueError):
+            r1 = Square(1, 2, -3)
 
     def test_area(self):
         """Print area"""
@@ -96,6 +108,19 @@ class TestSquareSize(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         self.assertEqual(s1_dictionary, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
         self.assertTrue(type(s1_dictionary), dict)
+
+    def test_str_method(self):
+        """test str method for square"""
+        s1 = Square(5)
+        self.assertEqual(str(s1), "[Square] (1) 0/0 - 5")
+
+    def test_to_dictionary2(self):
+        """Test conversion to dictionary"""
+        r = Square(1, 1, 1, 1)
+        d = {'id': 1, 'size': 1, 'x': 1, 'y': 1}
+        self.assertEqual(r.to_dictionary(), d)
+        r.my_fun_new_attr = 42
+        self.assertEqual(r.to_dictionary(), d)
 
     def test_save_to_file_None2(self):
         """JSON string None"""
