@@ -1,2 +1,0 @@
--- display all user permissions
-SHOW GRANTS 'user_0d_1';
