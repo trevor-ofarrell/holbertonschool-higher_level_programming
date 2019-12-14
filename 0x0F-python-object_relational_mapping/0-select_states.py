@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""script to list all states in db"""
 import MySQLdb
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
