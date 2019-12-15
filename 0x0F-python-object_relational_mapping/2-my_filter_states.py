@@ -3,7 +3,6 @@
 matching user input from the database hbtn_0e_0_usa"""
 
 import MySQLdb
-import sqlalchemy
 from sys import argv
 
 if __name__ == "__main__":
@@ -17,3 +16,4 @@ if __name__ == "__main__":
         print(row)
     cur.close()
     db.close()
+
