@@ -11,7 +11,7 @@ if __name__ == "__main__":
                          passwd=argv[2], db=argv[3], port=3306)
     cur = db.cursor()
     query = """SELECT * FROM states
-    WHERE name LIKE "{}" ORDER BY states.id ASC;"""
+    WHERE (name = "{}") ORDER BY states.id ASC;"""
     query = query.format(argv[4])
     cur.execute(query)
     rows = cur.fetchall()
