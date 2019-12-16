@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""script that prints the State object with
+the name passed as argument from the database hbtn_0e_6_usa"""
+
 from model_state import Base, State
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
@@ -17,4 +20,7 @@ if __name__ == "__main__":
     session = Session()
     for instance in session.query(State).filter(
             State.name == argv[4]).order_by(State.id):
-        print("{}".format(instance.id))
+        if instance is None:
+            print("Not found")
+        else:
+            print("{}".format(instance.id))
