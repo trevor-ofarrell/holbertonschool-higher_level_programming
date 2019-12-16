@@ -20,7 +20,7 @@ if __name__ == "__main__":
     session = Session()
     for instance in session.query(State).filter(
             State.name == argv[4]).order_by(State.id):
-        if instance is None:
-            print("Not found")
-        else:
+        if instance:
             print("{}".format(instance.id))
+        else:
+            print("Not found")
