@@ -19,5 +19,6 @@ if __name__ == "__main__":
                               '@localhost:3306', argv[3]))
     Session.configure(bind=engine)
     session = Session()
-    for city in session.query(City).order_by(City.id).all():
-        print("{}: ({}) {}".format(State.name, city.id, city.name))
+    for city, state in session.query(City, State).filter(
+            City.state_id == State.id).order_by(City.id).all():
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
