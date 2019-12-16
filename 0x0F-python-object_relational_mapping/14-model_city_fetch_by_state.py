@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-"""script to list all states in db"""
+"""script that prints all City objects from
+the database hbtn_0e_14_usa"""
 
 from model_state import Base, State
+from model_city import City
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
@@ -17,5 +19,5 @@ if __name__ == "__main__":
                               '@localhost:3306', argv[3]))
     Session.configure(bind=engine)
     session = Session()
-    for instance in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(instance.id, instance.name))
+    for city in session.query(City).order_by(City.id).all():
+        print("{}: ({}) {}".format(State.name, city.id, city.name))
