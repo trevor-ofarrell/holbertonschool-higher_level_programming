@@ -18,9 +18,10 @@ if __name__ == "__main__":
                               '@localhost:3306', argv[3]))
     Session.configure(bind=engine)
     session = Session()
-    for instance in session.query(State).filter(
-            State.name == argv[4]).order_by(State.id):
-        if instance:
+    instances = session.query(State).filter(
+        State.name == argv[4]).order_by(State.id).all()
+    if instances:
+        for instance in instances:
             print("{}".format(instance.id))
-        else:
-            print("Not found")
+    else:
+        print("Not found")
