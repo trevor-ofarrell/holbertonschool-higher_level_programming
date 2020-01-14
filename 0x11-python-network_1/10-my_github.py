@@ -6,6 +6,6 @@ import sys
 
 if __name__ == "__main__":
     re = requests.get(
-        "https://api.github.com/users/trevor-ofarrell", auth=(sys.argv[1], sys.argv[2]))
+        "https://api.github.com/user", auth=(sys.argv[1], sys.argv[2]))
     data = re.json()
     print(data.get("id"))
