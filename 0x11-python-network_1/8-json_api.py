@@ -10,8 +10,8 @@ if __name__ == "__main__":
     else:
         q = sys.argv[1]
     re = requests.post(url="http://0.0.0.0:5000/search_user", data={'q': q})
-    ret = re.json()
     try:
+        ret = re.json()
         if ret:
             print("[{}] {}".format(ret.get('id'), ret.get('name')))
         if not ret:
