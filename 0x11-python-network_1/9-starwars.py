@@ -7,6 +7,6 @@ import sys
 if __name__ == "__main__":
     re = requests.get("https://swapi.co/api/people/?search={}".format(sys.argv[1]))
     data = re.json()
-    print("{}{}".format("Nmber of results: ", data.get("count")))
+    print("{}{}".format("Number of results: ", data.get("count")))
     for name in data.get('results'):
         print(name.get('name'))
