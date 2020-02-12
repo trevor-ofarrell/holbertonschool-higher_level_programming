@@ -5,7 +5,7 @@ var args = process.argv.slice(1);
 readFile(String(args[1]), 'utf-8', (err, fileContent) => {
   const str = fileContent;
   if (err) {
-    return;
+    console.log(err);
   }
   console.log(str);
 });
